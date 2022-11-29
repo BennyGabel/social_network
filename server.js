@@ -19,6 +19,7 @@
 
 
 const express = require('express');
+// const mongoose = require('mongoose');     //    Already on      ./config/connection
 const db = require('./config/connection');
 const routes = require('./routes');
 
