@@ -24,7 +24,7 @@ const userController = {
         res.sendStatus(400);
       })
 
-    }
+    },
 
     createUser({ body }, res) {
         User.create(body)
