@@ -1,4 +1,13 @@
+/*   ./routes/api/user.js   */
+
 const router = require('express').Router();
+
+// Started working on this....... uncompleted
+// const {
+//   getallUsers,
+
+//   createUser
+// }
 
 
 /*

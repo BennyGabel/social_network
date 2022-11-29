@@ -1,3 +1,5 @@
+/*   ./models/thought.js   */
+
 const mongoose = require('mongoose');
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./reaction');

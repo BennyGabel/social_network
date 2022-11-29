@@ -1,3 +1,5 @@
+/*   ./routes/api/index.js   */
+
 const router = require('express').Router();
 const thought = require('./thought');
 const user = require('./user');

@@ -1,3 +1,5 @@
+/*   ./models/reactions.js   */
+
 const mongoose = require('mongoose');
 const { Schema, Types } = require('mongoose');
 

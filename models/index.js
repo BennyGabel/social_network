@@ -1,3 +1,5 @@
+/*   ./models/index.js   */
+
 const user = require('./user');
 const thought = require('./thought');
 

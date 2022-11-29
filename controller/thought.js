@@ -1,0 +1,1 @@
+/*   ./controller/thought.js   */
