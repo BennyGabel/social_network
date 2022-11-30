@@ -7,9 +7,10 @@ const thoughtController = {
         console.log(params);
         Thought.create(body)
           .then(({ _id }) => {
-            return Pizza.findOneAndUpdate(
-              { _id: params.pizzaId },
-              { $push: { comments: _id } },
+            return User.findOneAndUpdate(
+              // { _id: params.thoughtId },
+              { username: body.username },
+              { $push: { thoughts: _id } },
               { new: true }
             );
           })
@@ -23,7 +24,24 @@ const thoughtController = {
           })
           .catch(err => res.json(err));
       },
-    
+      
+      //
+      addReaction({ params, body }, res) {
+        Thought.findOneAndUpdate(
+          { _id: params.thoughtId },
+          { $push: { reactions: body } },
+          { new: true, runValidators: true }
+        )
+          .then(dbReactionData => {
+            if (!dbReactionData) {
+              res.status(404).json({ message: 'No reaction found with this id!' });
+              return;
+            }
+            res.json(dbReactionData);
+          })
+          .catch(err => res.json(err));
+      },
+      //
     // getallUsers (req, res) {
     //     User.find().then(dbUserData => {
     //         // console.log(dbUserData);
