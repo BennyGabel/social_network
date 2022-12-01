@@ -24,26 +24,14 @@ router
 router
   .route('/:id')  
   .get(getThoughtById)
-  .put(updateThought)
-  // .delete(deleteThought);
+  .put(updateThought);
+  // .delete(deleteThought);     Move to route below, since it will require to pass userid to be removed from User's thoughts
 
-///
+// Route to deleteThought will require userid
 router
   .route('/:id/user/:userid')  
   .delete(deleteThought);
 
-
-///
-/*
-// /api/users/:id
-router
-  .route('/:id')
-  .get(getUserById)
-  .put(updateUser)
-  .delete(deleteUser);
-
-//
-*/
 
 router
   .route('/:thoughtId/reaction')
