@@ -24,6 +24,47 @@ const thoughtController = {
           })
           .catch(err => res.json(err));
       },
+
+      //*
+      getAllThoughts (req, res) {
+        Thought.find().then(dbThoughtData => {
+            // console.log(dbUserData);
+            if (!dbThoughtData) {
+              res.status(404).json({ message: 'No thoughts found!' });
+              return;
+            }
+            res.json(dbThoughtData);
+          })
+          .catch(err => res.json(err))
+    },      
+
+      getThoughtById({ params }, res) {
+        Thought.findOne({ _id: params.id })
+        .then(dbThoughtData => res.json(dbThoughtData))
+        .catch(err => {
+          console.log(err);
+          res.sendStatus(400);
+        })
+    },
+
+
+      updateThought({ params, body }, res) {
+         Thought.findOneAndUpdate({ _id: params.id }, body, {
+         new: true,
+         runValidators: true
+       })
+         .then(dbUserData => {
+           if (!dbUserData) {
+             res.status(404).json({ message: 'No Thought found with this id!' });
+             return;
+           }
+           res.json(dbUserData);
+         })
+         .catch(err => res.json(err));
+     },
+
+
+      //*
       
       //
       addReaction({ params, body }, res) {
@@ -41,6 +82,28 @@ const thoughtController = {
           })
           .catch(err => res.json(err));
       },
+
+
+      
+// 20.40
+      delReaction({ params, body }, res) {
+        Thought.findOneAndUpdate(
+          { _id: params.thoughtId },
+          { $pull: { reactions: body } },
+          { new: true, runValidators: true }
+        )
+          .then(dbReactionData => {
+            if (!dbReactionData) {
+              res.status(404).json({ message: 'No reaction found with this id!' });
+              return;
+            }
+            res.json(dbReactionData);
+          })
+          .catch(err => res.json(err));
+},
+
+// 20.40
+
       //
     // getallUsers (req, res) {
     //     User.find().then(dbUserData => {
