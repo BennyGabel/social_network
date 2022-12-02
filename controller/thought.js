@@ -80,10 +80,12 @@ const thoughtController = {
   },  
 */
 
-// .then(dbThoughtData => User.findOneAndUpdate({ id: params.userid }, {$pull: {thought:params.id}}, {new:true}))
+// .then(dbThoughtData => User.findOneAndUpdate({ id: params.userid }, {$pull: {thoughts:params.id}}, {new:true}))
+
+// .then(dbThoughtData => User.findOneAndUpdate({ id: params.userid }, {$pull: {thoughts:params.id}}, {new:true}))     WORKING
 deleteThought({ params }, res) {
   Thought.findOneAndDelete({ _id: params.id })
-    .then(dbThoughtData => User.findOneAndUpdate({ id: params.userid }, {$pull: {thoughts:params.id}}, {new:true}))
+    .then(dbThoughtData => User.findOneAndUpdate({ thougts: params.id }, {$pull: {thoughts:params.id}}, {new:true}))
     .then(dbData => res.json(dbData))
     .catch(err => res.json(err));
  },
