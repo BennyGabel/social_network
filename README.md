@@ -1,9 +1,9 @@
 # social network
 
 ## Description
-  Social Network
-  NoSQL - using Mongoose
-  Back End ONLY
+  * Social Network
+  * NoSQL - using Mongoose
+  * Back End ONLY
 
 
 ## Table of Contents
