@@ -23,7 +23,6 @@
    * express
    * mongoose
 
-
 ## Data Models
 1. user
 2. thought
