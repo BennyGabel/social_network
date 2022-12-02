@@ -5,7 +5,6 @@ const { User, Thought } = require('../models');
 const userController = {
     getallUsers (req, res) {
         User.find().then(dbUserData => {
-            // console.log(dbUserData);
             if (!dbUserData) {
               res.status(404).json({ message: 'No users found!' });
               return;
@@ -17,7 +16,6 @@ const userController = {
 
     getUserById({ params }, res) {
       User.findOne({ _id: params.id })
-      // Didn't do anything with Thoughts yet
       .then(dbUserData => res.json(dbUserData))
       .catch(err => {
         console.log(err);
@@ -68,26 +66,5 @@ const userController = {
       .catch(err => res.json(err));
     }
 };
-
-
-
-/*
- addReaction({ params, body }, res) {
-        Thought.findOneAndUpdate(
-          { _id: params.thoughtId },
-          { $push: { reactions: body } },
-          { new: true, runValidators: true }
-        )
-          .then(dbReactionData => {
-            if (!dbReactionData) {
-              res.status(404).json({ message: 'No reaction found with this id!' });
-              return;
-            }
-            res.json(dbReactionData);
-          })
-          .catch(err => res.json(err));
-      },
-*/
-
 
 module.exports = userController
